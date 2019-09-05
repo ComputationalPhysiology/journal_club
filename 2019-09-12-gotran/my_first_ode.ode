@@ -1,0 +1,10 @@
+# Saved Gotran model
+
+states(u=ScalarParam(0.5),
+       v=ScalarParam(-1.0))
+
+parameters(eps=ScalarParam(1e-05))
+
+expressions("my_first_ode")
+du_dt = -1.0*(v*v*v)/eps
+dv_dt = 1.0*(u*u*u)/eps
