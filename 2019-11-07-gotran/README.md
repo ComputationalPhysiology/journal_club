@@ -1,78 +1,86 @@
-# Journal Club September 12 2019 - gotran
+# Journal Club November 7th 2019 - gotran
 
 ## gotran - General Ode TRANslator
 
-* Developed by Johan Hake
-* Maintained by Henrik Finsberg and Kristan Hustad
+- Developed by Johan Hake
 
+<img src="https://avatars0.githubusercontent.com/u/674382?s=400&v=4" width=150>
 
-Source code: https://github.com/ComputationalPhysiology/gotran
-Documentation: http://computationalphysiology.github.io/gotran/
+- Maintained by Henrik Finsberg and Kristan Hustad
+
+<img src="https://www.simula.no/sites/default/files/styles/employee-detail/public/user/images/img_4601.jpg?itok=oCd21eU-" width=150>
+<img src="https://www.simula.no/sites/default/files/styles/employee-detail/public/user/images/img_2446.jpg?itok=aT4KNrRG" width=150>
+
+- Source code: https://github.com/ComputationalPhysiology/gotran
+
+- Documentation: http://computationalphysiology.github.io/gotran/
 
 ### About
 
 Gotran:
 
-* provides a Python interface to declare arbitrary ODEs.
+- provides a Python interface to declare arbitrary ODEs.
 
-* provides an interface for generating CUDA/C/C++/Python/Matlab/Julia/OpenCL code for a number of functions including the right hand side and symbolic generation of a Jacobian.
+- provides an interface for generating CUDA/C/C++/Python/Matlab/Julia/OpenCL code for a number of functions including the right hand side and symbolic generation of a Jacobian.
 
-* is intentionally lightweight, and could be interfaced by other Python libraries needing functionalities to abstract a general ODE.
-* depends on NumPy, and on SymPy. See further instructions in can load models from external ODE desciption files such as CellML
+- is intentionally lightweight, and could be interfaced by other Python libraries needing functionalities to abstract a general ODE.
+- depends on NumPy, and on SymPy. See further instructions in can load models from external ODE desciption files such as CellML
 
 ### Install
+
 ```
 pip install gotran
 ```
+
 or install the development version
+
 ```
 pip install git+https://github.com/ComputationalPhysiology/gotran.git
 ```
 
 For some features you also need to install [swig](http://www.swig.org).
 
-
 ## Supported programming languages
 
-* Python
-    ```
-    gotran2py tentusscher_2004_mcell.ode
-    ```
-* Matlab
-    ```
-    gotran2matlab tentusscher_2004_mcell.ode
-    ```
-* C
-    ```
-    gotran2c tentusscher_2004_mcell.ode
-    ```
-* C++
-    ```
-    gotran2cpp tentusscher_2004_mcell.ode
-    ```
-* CUDA
-    ```
-    gotran2cuda tentusscher_2004_mcell.ode
-    ```
-* Julia
-    ```
-    gotran2julia tentusscher_2004_mcell.ode
-    ```
-* FEniCS
-    ```
-    gotran2dolfin tentusscher_2004_mcell.ode
-    ```
-* CBCBeat
-    ```
-    gotran2beat tentusscher_2004_mcell.ode
-    ```
-* OpenCL
-    ```
-    gotran2opencl tentusscher_2004_mcell.ode
-    ```
-
+- Python
+  ```
+  gotran2py tentusscher_2004_mcell.ode
+  ```
+- Matlab
+  ```
+  gotran2matlab tentusscher_2004_mcell.ode
+  ```
+- C
+  ```
+  gotran2c tentusscher_2004_mcell.ode
+  ```
+- C++
+  ```
+  gotran2cpp tentusscher_2004_mcell.ode
+  ```
+- CUDA
+  ```
+  gotran2cuda tentusscher_2004_mcell.ode
+  ```
+- Julia
+  ```
+  gotran2julia tentusscher_2004_mcell.ode
+  ```
+- FEniCS
+  ```
+  gotran2dolfin tentusscher_2004_mcell.ode
+  ```
+- CBCBeat
+  ```
+  gotran2beat tentusscher_2004_mcell.ode
+  ```
+- OpenCL
+  ```
+  gotran2opencl tentusscher_2004_mcell.ode
+  ```
 
 ## Latex
+
 Write ODE in a nice Latex document
 
 ```
@@ -85,6 +93,7 @@ Say we want to solve the following ODE
 ![ode](ode.png)
 
 Then one way is to use the python interface
+
 ```python
 from gotran import ODE
 u0 = 0.5
@@ -129,8 +138,8 @@ or you can simple write the `.ode`-file directly.
 
 You can either for example download the cell models from https://www.cellml.org
 
-
 Get cell model
+
 ```shell
 wget https://models.physiomeproject.org/workspace/tentusscher_noble_noble_panfilov_2004/@@rawfile/941ec8e54e46e6fe82765c17f1d47582169baac2/tentusscher_noble_noble_panfilov_2004_a.cellml
 ```
@@ -141,9 +150,7 @@ wget https://models.physiomeproject.org/workspace/tentusscher_noble_noble_panfil
 cellml2gotran tentusscher_noble_noble_panfilov_2004_a.cellml
 ```
 
-
 ### Convert .ode files to python files
-
 
 ```shell
 gotran2py  tentusscher_2004_mcell.ode --output cell_model_python
@@ -153,11 +160,10 @@ gotran2py  tentusscher_2004_mcell.ode --output cell_model_python
 
 We can for example use the ode-solver in Scipy
 
-* [Python script](single_cell.py)
-* [Notebook](single_cell.ipynb)
+- [Python script](single_cell.py)
+- [Notebook](single_cell.ipynb)
 
-Alternatively you  can use `gotranrun`.
-
+Alternatively you can use `gotranrun`.
 
 ## Integration with CBCBeat
 
@@ -169,13 +175,14 @@ gotran2py  tentusscher_2004_mcell.ode --output cell_model_python
 gotran2beat  tentusscher_2004_mcell.ode --output cell_model_cbcbeat
 ```
 
-
 ## Potential enhancements
 
-* `gotran2cellml`
-    - Convert `.ode`-file to `.cellml` so that any file written in `.ode`-format can be converted to `.cellml`
-* Incorporate optimizations from Kristian's master thesis
-* Make [`goss`](https://bitbucket.org/johanhake/goss) work again.
-* Write better documentation - more example ++
-* Convert tests to `pytest`
-* Fix bugs
+- `gotran2cellml`
+  - Convert `.ode`-file to `.cellml` so that any file written in `.ode`-format can be converted to `.cellml`
+- Incorporate optimizations from Kristian's master thesis
+- Make [`goss`](https://bitbucket.org/johanhake/goss) work again.
+- Write better documentation - more example ++
+- Convert tests to `pytest`
+- Fix bugs
+
+We need more users and contributors!
